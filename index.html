@@ -19,6 +19,8 @@
 
     <link href="css/style.css" rel="stylesheet" />
 
+ 
+    
     <title>Welcome To Piren's Pysanky's!</title>
 
 
@@ -30,7 +32,7 @@
 
     <header class="header">
         <nav class="navbar">
-            <a href="#" class="nav-logo">
+            <a href="/index.html" class="nav-logo">
                 <h1 class="site-title">
                     <span class="site-first-title">Piren's</span>
                     <span class="site-second-title">Pysanky's</span>
@@ -38,10 +40,10 @@
             </a>
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="#" class="nav-link current-link">Home</a>
+                    <a href="/index.html" class="nav-link current-link">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Store</a>
+                    <a href="/store.html" class="nav-link">Store</a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">Cart</a>
@@ -128,20 +130,8 @@
         </div>
     </div>
 
+   <script type="text/javascript" src="js/siteScripts.js"></script>
 
-    <script>
-        const hamburger = document.querySelector(".hamburger");
-        const navMenu = document.querySelector(".nav-menu");
-        const carousel = document.querySelector(".img-active");
-
-        hamburger.addEventListener("click", mobileMenu);
-
-        function mobileMenu() {
-            hamburger.classList.toggle("active");
-            navMenu.classList.toggle("active");
-
-        }
-    </script>
 
 
 </body></html>
