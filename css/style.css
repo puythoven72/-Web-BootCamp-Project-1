@@ -129,31 +129,74 @@
 
  }
 
+ .store-header {
+     font-family: 'Style Script', cursive;
+     color: #EAB159;
+     font-size: 2.6rem;
+     font-weight: bold;
+     margin-top: 30px;
+     letter-spacing: 5px;
+     text-shadow: 2px 2px 5px rgba(138, 192, 222, 1);
+ }
 
  .gallery {
-     border: 1px solid #8AC0DE;
-     padding: 20px;
-     margin-top: 20px;
+     border-top: 1px solid #8AC0DE;
  }
 
+ .gallery-item {
+     border-bottom: solid 1px #8AC0DE;
+     height: 100%;
+     font-family: 'Kalam', cursive;
+ }
 
  .gallery-info {
-     
+     background-color: #F2F2F2;
  }
 
-.gallery img{
-   width: 200px;
-   height: 200px;
-}
-.add-to-cart{
-    background-color: #EAB159;
-}
+ .gallery img {
+     width: 200px;
+     height: 200px;
+     margin: 10px 0 10px 0;
+ }
 
-.add-to-cart:hover {
-     background-color:#8AC0DE;
+ .gallery h4 {
+     color: #EAB159;
+     line-height: 0.8;
+ }
+
+ .add-to-cart {
+     background-color: #EAB159;
+ }
+
+ .add-to-cart:hover {
+     background-color: #8AC0DE;
      font-weight: bold;
  }
 
+ .current-order-title h4 {
+   
+      font-family: 'Style Script', cursive;
+     
+     
+     color: #EAB159;
+     font-size: 2.6rem;
+     font-weight: bold;
+     margin-top: 30px ;
+     letter-spacing: 5px;
+     text-shadow: 2px 2px 5px rgba(138, 192, 222, 1);
+ }
+
+ .current-cart img {
+     width: 100px;
+     height: 100px;
+     margin-bottom: 10px;
+ }
+.cart-item {
+     border-bottom: solid 1px #8AC0DE;
+     height: 100%;
+     font-family: 'Kalam', cursive;
+     margin: 10px 0 10px 0;
+ }
 
  @media only screen and (max-width: 768px) {
      .nav-menu {
@@ -227,9 +270,19 @@
      .about-us img {
          display: none;
      }
-     .gallery img{
-   width: 100px;
-   height: 100px;
-}
+
+     .gallery img {
+         width: 100px;
+         height: 100px;
+     }
+
+
+     .gallery-item {
+         padding-bottom: 10px;
+     }
+
+
+
+
 
  }
