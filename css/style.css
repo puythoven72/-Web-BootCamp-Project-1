@@ -174,14 +174,14 @@
  }
 
  .current-order-title h4 {
-   
-      font-family: 'Style Script', cursive;
-     
-     
+
+     font-family: 'Style Script', cursive;
+
+
      color: #EAB159;
      font-size: 2.6rem;
      font-weight: bold;
-     margin-top: 30px ;
+     margin-top: 30px;
      letter-spacing: 5px;
      text-shadow: 2px 2px 5px rgba(138, 192, 222, 1);
  }
@@ -191,11 +191,18 @@
      height: 100px;
      margin-bottom: 10px;
  }
-.cart-item {
+
+ .cart-item {
      border-bottom: solid 1px #8AC0DE;
      height: 100%;
      font-family: 'Kalam', cursive;
      margin: 10px 0 10px 0;
+ }
+
+ .cartTotal {
+     height: 100%;
+     font-family: 'Kalam', cursive;
+   
  }
 
  @media only screen and (max-width: 768px) {
@@ -281,7 +288,9 @@
          padding-bottom: 10px;
      }
 
-
+ .cart-item {
+         padding-bottom: 10px;
+     }
 
 
 

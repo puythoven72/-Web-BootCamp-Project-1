@@ -12,18 +12,20 @@
   const cartQuant = "<div class='col-lg-2 col-md-2 col-sm-1'>" +
       "<p> quant </p></div>";
 
-  const cartTitle = "<div class='col-lg-2 col-md-2 col-sm-1'>" +
-      "<p>A Beutiful Egg</p></div>";
+  const cartName = "<div class='col-lg-2 col-md-2 col-sm-1'>" +
+      "<p> name </p></div>";
 
   const cartPrice = "<div class='col-lg-2 col-md-2 col-sm-1'>" +
-      "<p>35</p></div>";
+      "<p> price </p></div>";
 
   const cartButton = "<div class='col-lg-2 col-md-2 col-sm-1'>" +
       "<button type='button' class='btn btn-default btn-sm add-to-cart' " +
-      "onclick='addToCart(document.getElementById('price_1').innerText, document.getElementById('title_1').innerText)'>" +
+      "onclick='removeFrmCart( removeObj )'>" +
       "<span class='glyphicon glyphicon-shopping-cart'></span>Remove</button></div>";
 
-  // let customList = [];
+  const cartEmpty = "<div class='col-lg-2 col-md-2 col-sm-1'>" + "<p> Cart Is Empty </p></div>";
+
+
 
   var storedCount = sessionStorage.getItem("currentCount");
 
@@ -50,81 +52,29 @@
   function addToCart(price, title, imagePath) {
       count = parseFloat(count) + 1;
       var imgName = getImgName(imagePath)
-      alert(imgName + " is path " + imagePath);
       if (checkItemExist(imgName)) {
-          var keyCheck = sessionStorage.getItem(imgName);
-          var pysanky = JSON.parse(keyCheck);
-          var newQuant = (pysanky.quantity + 1);
-          var pysanky = new Pysanky(price, title, imgName, newQuant);
+          updateQuantity(imgName, "add");
+
       } else {
           var pysanky = new Pysanky(price, title, imgName, 1);
+          sessionStorage.setItem(imgName, JSON.stringify(pysanky))
       }
-      sessionStorage.setItem(imgName, JSON.stringify(pysanky));
-
-
-
-
-      //    customList.push(pysanky);
-
-
-      /*    sessionStorage.setItem('storeList', JSON.stringify(customList));
-        pysanky.add(price, title);
-                  alert(customList.length);
-         
-        
-          */
-
-
-
-
-
-
-      /*
-      
-      
-       count = parseFloat(count) + 1;
-      alert(title + "_" + count);
-     
-      alert(price + "passed");
-      var pysanky = new Pysanky(price, title);
-      alert(pysanky.price);
-     
-      sessionStorage.setItem("currentCount", count);
-      sessionStorage.setItem(title + "_" + count, price);
-    
-        
-          */
   }
 
-  /*var Pysanky = {
-       name: "",
-       description: "",
-       price: 0,
 
-   };
-*/
 
-  function updateCartItem(key) {
-      var retrievedObject = JSON.parse(key);
-      alert(retrievedObject);
-  }
 
 
 
   function Pysanky(price, name, imageName, quantity) {
-      alert(" quant " + quantity)
       this.price = price;
       this.name = name;
       this.imageName = imageName;
       this.quantity = quantity;
+
   }
 
-  //
-  //  pysanky.add = function (price, name) {
-  //      pysanky.name = name;
-  //      pysanky.price = price;
-  //
-  //  };
+
 
 
   function getImgName(fullPath) {
@@ -135,7 +85,6 @@
 
   function checkItemExist(key) {
       var keyCheck = sessionStorage.getItem(key);
-      alert(keyCheck);
       if (keyCheck) {
           return true
       } else {
@@ -143,51 +92,91 @@
       }
   }
 
-  function myFunction() {
+  function updateQuantity(key, qtyUpdate) {
+
+      var keyCheck = sessionStorage.getItem(key);
+
+      var pysanky = JSON.parse(keyCheck);
+      var newQuant = 0;
+      var imgName = pysanky.imageName;
+      var price = pysanky.price;
+      var name = pysanky.name;
+      if (qtyUpdate === "add") {
+          newQuant = (pysanky.quantity + 1);
+      } else {
+          if (pysanky.quantity == 1) {
+              sessionStorage.removeItem(key);
+              return;
+          } else {
+              newQuant = (pysanky.quantity - 1);
+          }
+      }
+
+      var pysanky = new Pysanky(price, name, imgName, newQuant);
+
+      sessionStorage.setItem(imgName, JSON.stringify(pysanky));
+  }
+
+  function cartOnLoad() {
       var total = 0;
       var cartCount = 0;
+      if (sessionStorage.length == 0) {
+            document.getElementById("current-cart").innerHTML += cartRow;
+           document.getElementById("basket").innerHTML += cartEmpty;
+      }
+
       for (const [key, value] of Object.entries(sessionStorage)) {
           cartCount = cartCount + 1;
 
-
-          updatedCartRowId = cartRowCreate(cartCount);
-
-          alert(updatedCartRowId + " is cart Count");
+          var updatedCartRowId = cartRowCreate(cartCount);
 
           var updatedCartRow = cartRow.replace(" 'basket' ", updatedCartRowId);
+
           document.getElementById("current-cart").innerHTML += updatedCartRow;
 
           var pysanky = JSON.parse(value);
+
+          var rowTot = calTotalRow(pysanky.price, pysanky.quantity);
+
+          total += rowTot;
 
           var imgPath = "'images/store/" + pysanky.imageName + "'";
 
           var updatedImg = cartImg.replace("'imagePath'", imgPath);
 
-          alert(updatedImg);
-
-
-          var cartId = updatedCartRowId.replaceAll("'", '"');
-alert(cartId);
-          document.getElementById("basket_1").innerHTML += updatedImg;
+          document.getElementById("basket_" + cartCount).innerHTML += updatedImg;
 
           var updatedQuant = cartQuant.replace("quant", pysanky.quantity);
 
-          document.getElementById("basket_1").innerHTML += updatedQuant;
+          document.getElementById("basket_" + cartCount).innerHTML += updatedQuant;
+
+          var updatedname = cartName.replace("name", pysanky.name);
+          document.getElementById("basket_" + cartCount).innerHTML += updatedname;
+
+          var updatedPrice = cartPrice.replace("price", pysanky.price);
+          document.getElementById("basket_" + cartCount).innerHTML += updatedPrice;
+
+          var updatedCartButton = cartButton.replace("removeObj", '"' + key + '"');
+
+          document.getElementById("basket_" + cartCount).innerHTML += updatedCartButton;
       }
-      //  document.getElementById("basket").innerHTML += cartImg;
-      //  document.getElementById("basket").innerHTML += cartQuant;
-      //  document.getElementById("basket").innerHTML += cartTitle;
-      //  document.getElementById("basket").innerHTML += cartPrice;
-      //document.getElementById("basket").innerHTML += cartButton;
 
 
-      //resultField.innerText = "The Answer :$ " + total;
+      document.getElementById("resultField").innerHTML = "Total: $" + total;
+  }
 
+  function calTotalRow(price, qty) {
+      return (price * qty);
   }
 
 
   function cartRowCreate(cartCount) {
-
       return "'basket_" + cartCount + "'";
+  }
 
+  function removeFrmCart(removeObj) {
+      if (checkItemExist(removeObj)) {
+          updateQuantity(removeObj, "remove");
+          location.reload()
+      }
   }

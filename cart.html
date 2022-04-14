@@ -28,7 +28,7 @@
 
 </head>
 
-<body onload="myFunction()">
+<body onload="cartOnLoad()">
 
 
     <header class="header">
@@ -41,13 +41,13 @@
             </a>
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="/index.html" class="nav-link current-link">Home</a>
+                    <a href="/index.html" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item">
                     <a href="/store.html" class="nav-link">Store</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Cart</a>
+                    <a href="#" class="nav-link current-link">Cart</a>
                 </li>
 
             </ul>
@@ -95,42 +95,15 @@
 
 
         </div>
-        <div class="row cart-item justify-content-md-center justify-content-sm-center  text-center d-flex align-items-center">
-
-            <div class="col-lg-2 col-md-2 col-sm-1">
-                <img id="pysanky-store-1" src="images/store/pysanky-store-1.jpg" class="img-fluid img-thumbnail" alt="image">
-            </div>
-
-            <div class="col-lg-2 col-md-2 col-sm-1">
-                <p>1</p>
-            </div>
-            <div class="col-lg-2 col-md-2 col-sm-1">
-                <p>A Beutiful Egg</p>
-            </div>
-            <div class="col-lg-2 col-md-2 col-sm-1">
-                <p>35</p>
-            </div>
-            <div class="col-lg-2 col-md-2 col-sm-1">
-
-
-                <button type="button" class="btn btn-default btn-sm add-to-cart" onclick="addToCart(document.getElementById('price_1').innerText, document.getElementById('title_1').innerText)">
-
-                    <span class="glyphicon glyphicon-shopping-cart"></span>Remove
-                </button>
-
-            </div>
-
-
-
-        </div>
+       
 
     </div>
 
 
-    
+
     <div class="container current-cart" id="current-cart">
-        
-      <!--  <div class="row cart-item justify-content-md-center justify-content-sm-center  text-center d-flex align-items-center" id="basket">
+
+        <!--  <div class="row cart-item justify-content-md-center justify-content-sm-center  text-center d-flex align-items-center" id="basket">
 
         
             
@@ -143,9 +116,17 @@
 
     </div>
 
+    <div class="container cartTotal">
+        
 
+        <div class="row justify-content-end">
+            
+            <div class="col-3">
+              <h4 id="resultField"></h4>
+            </div>
+        </div>
 
-
+    </div>
 
 
 
@@ -154,4 +135,6 @@
 
     <script type="text/javascript" src="js/siteScripts.js">
     </script>
-</body></html>
+</body>
+
+</html>
