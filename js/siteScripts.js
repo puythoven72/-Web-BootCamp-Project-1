@@ -13,7 +13,7 @@ var s_a = new Array();
 s_a[1] = "Alabama *AL|Alaska*AK|Arizona*AZ|Arkansas*AR|California*CA|Colorado*CO|Connecticut*CT|Delaware*DE|District of Columbia*DC|Florida*FL|Georgia*GA|Hawaii*HI|Idaho*ID|Illinois*IL|Indiana*IN|Iowa*IA|Kansas*KS|Kentucky*KY|Louisiana*LA|Maine*ME|Maryland*MD|Massachusetts*MA|Michigan*MI|Minnesota*MN|Mississippi*MS|Missouri*MO|Montana*MT|Nebraska*NE|Nevada*NV|New Hampshire*NH|New Jersey*NJ|New Mexico*NM|New York*NY|North Carolina*NC|North Dakota*ND|Ohio*OH|Oklahoma*OK|Oregon*OR|Pennsylvania*PA|Rhode Island*RI|South Carolina*SC|South Dakota*SD|Tennessee*TN|Texas*TX|Utah*UT|Vermont*VT|Virginia*VA|Washington*WA|West Virginia*WV|Wisconsin*WI|Wyoming*WY";
 
 
-/*Constants USED FOR GENERATING HTML FOR CART Page*/
+/*Constants USED FOR GENERATING HTML FOR Added Items on CART Page*/
 const cartRow = "<div class='row cart-item justify-content-md-center justify-content-sm-center  text-center d-flex align-items-center' id= 'basket' > </div>";
 
 
@@ -23,22 +23,19 @@ const cartImg = "<div class='col-lg-2 col-md-2 col-sm-1'>" +
 const cartQuant = "<div class='col-lg-2 col-md-2 col-sm-1'>" +
     "<p> quant </p></div>";
 
-const cartName = "<div class='col-lg-2 col-md-2 col-sm-1'>" +
-    "<p> name </p></div>";
+const cartName = "<div class='col-lg-2 col-md-2 col-sm-1'>" + "<p> name </p></div>";
 
-const cartPrice = "<div class='col-lg-2 col-md-2 col-sm-1'>" +
-    "<p> price </p></div>";
+const cartPrice = "<div class='col-lg-2 col-md-2 col-sm-1'>" + "<p>$" + " price </p></div>";
 
 const cartButton = "<div class='col-lg-2 col-md-2 col-sm-1'>" +
     "<button type='button' class='btn btn-default btn-sm add-to-cart' " +
     "onclick='removeFrmCart( removeObj )'>" +
     "<span class='glyphicon glyphicon-shopping-cart'></span>Remove</button></div>";
 
-const cartEmpty = "<div class='col-lg-2 col-md-2 col-sm-1'>" + "<p> Cart Is Empty </p></div> "+
-"<div class='row cart-item justify-content-md-center justify-content-sm-center  text-center d-flex align-items-center' id= 'empty-basket-img' > </div>"
-;
+const cartEmpty = "<div class='col-lg-2 col-md-2 col-sm-1'>" + "<p> Cart Is Empty </p></div> " +
+    "<div class=' justify-content-md-center justify-content-sm-center  text-center d-flex align-items-center' id= 'empty-basket-img' > </div>";
 
-const cartEmptyContent = "<div class='col empty-cart'><img src='images/pysanky-1.jpg' alt='Pysanky'></div>";
+const cartEmptyContent = "<div class='col empty-cart'><img src='images/pysanky-3.jpg' alt='Pysanky'></div>";
 
 var storedCount = sessionStorage.getItem("currentCount");
 
@@ -73,12 +70,14 @@ function addToCart(price, title, imagePath) {
         var pysanky = new Pysanky(price, title, imgName, 1);
         sessionStorage.setItem(imgName, JSON.stringify(pysanky))
     }
+
+
 }
 
 
 
 
-
+/*Creates the pysanky object*/
 
 function Pysanky(price, name, imageName, quantity) {
     this.price = price;
@@ -138,7 +137,7 @@ function cartOnLoad() {
         document.getElementById("current-cart").innerHTML += cartRow;
         document.getElementById("basket").innerHTML += cartEmpty;
 
-       
+
         document.getElementById("empty-basket-img").innerHTML += cartEmptyContent;
 
     }
@@ -219,7 +218,7 @@ function checkOutLoad(stateId, stateElementId) {
     const elems = document.querySelectorAll('.datepicker_input');
     for (const elem of elems) {
         const datepicker = new Datepicker(elem, {
-            'format': 'dd/mm/yyyy', // UK format
+            'format': 'mm/dd/yyyy',
             title: getDatePickerTitle(elem)
         });
     }

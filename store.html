@@ -9,8 +9,8 @@
     <!-- Bootstrap CSS -->
     <link href="css/normalize.css" rel="stylesheet" />
 
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 
@@ -18,6 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Style+Script&display=swap" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
+
 
     <link href="css/style.css" rel="stylesheet" />
 
@@ -69,12 +70,12 @@
                 <img id="pysanky-store-1" src="images/store/pysanky-store-1.jpg" class="img-fluid img-thumbnail" alt="image">
             </div>
             <div class="col-lg-6 col-md-6 col-sm-2">
-                <h4 id="title_1">Title Here</h4>
+                <h4 id="title_1">Modern Daisy</h4>
                 <article>
-                    Information About Egg
+                    This is a modern spin on a traditional Ukranian flower design. Dye colors are a vibrant orange and a dark blue. 
                 </article>
-                <div>Price: $<span id="price_1">35</span></div>
-                <button type="button" class="btn btn-default btn-sm add-to-cart" onclick="addToCart(document.getElementById('price_1').innerText, document.getElementById('title_1').innerText,document.getElementById('pysanky-store-1').src)">
+                <article>Price: $<span id="price_1">35</span></article>
+                <button type="button" class="btn btn-default btn-sm add-to-cart" onclick="addToCart(document.getElementById('price_1').innerText, document.getElementById('title_1').innerText,document.getElementById('pysanky-store-1').src)" data-bs-toggle="modal" data-bs-target="#cart-update">
 
                     <span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart
                 </button>
@@ -85,16 +86,16 @@
 
         <div class="row justify-content-sm-center text-center d-flex align-items-center gallery-item">
             <div class="col-lg-6 col-md-6">
-                <img id ="pysanky-store-2" class="img-fluid img-thumbnail" src="images/store/pysanky-store-2.jpg" alt="Work four">
+                <img id="pysanky-store-2" class="img-fluid img-thumbnail" src="images/store/pysanky-store-2.jpg" alt="Work four">
             </div>
             <div class="col-lg-6 col-md-6">
-                <h4 id="title_2">Title Here2</h4>
+                <h4 id="title_2">Traditional Lateral Division </h4>
                 <article>
-                    Information About Egg
+                    This is a classic simple Ukranian egg pattern division in red and black.
                 </article>
-                <div>Price: $<span id="price_2">40</span>
-                </div>
-                <button type="button" class="btn btn-default btn-sm add-to-cart" onclick="addToCart(document.getElementById('price_2').innerText, document.getElementById('title_2').innerText,document.getElementById('pysanky-store-2').src)">
+                <article>Price: $<span id="price_2">40</span>
+                </article>
+                <button type="button" class="btn btn-default btn-sm add-to-cart" onclick="addToCart(document.getElementById('price_2').innerText, document.getElementById('title_2').innerText,document.getElementById('pysanky-store-2').src)" data-bs-toggle="modal" data-bs-target="#cart-update">
 
                     <span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart
                 </button>
@@ -106,13 +107,13 @@
                 <img id="pysanky-store-5" class="img-fluid img-thumbnail" src="images/store/pysanky-store-5.jpg" alt="Work four">
             </div>
             <div class="col-lg-6 col-md-6">
-                <h4 id="title_3">Title Here3</h4>
+                <h4 id="title_3">Meridian Blue flowers</h4>
                 <article>
-                    Information About Egg
+                    This is a modern flower design coupled with a traditional Ukrainian egg division.  
                 </article>
-                <div>Price: $<span id="price_3">38</span>
-                </div>
-                <button type="button" class="btn btn-default btn-sm add-to-cart" onclick="addToCart(document.getElementById('price_3').innerText, document.getElementById('title_3').innerText, document.getElementById('pysanky-store-5').src)">
+                <article>Price: $<span id="price_3">38</span>
+                </article>
+                <button type="button" class="btn btn-default btn-sm add-to-cart" onclick="addToCart(document.getElementById('price_3').innerText, document.getElementById('title_3').innerText, document.getElementById('pysanky-store-5').src)" data-bs-toggle="modal" data-bs-target="#cart-update">
 
                     <span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart
                 </button>
@@ -124,13 +125,13 @@
                 <img id="pysanky-store-3" class="img-fluid img-thumbnail" src="images/store/pysanky-store-3.jpg" alt="Work four">
             </div>
             <div class="col-lg-6 col-md-6">
-                <h4 id="title_4">Title Here4</h4>
+                <h4 id="title_4">Pink Petals</h4>
                 <article>
-                    Information About Egg
+                    This pink flower with 8 petals symbolizes compassion,freedom and self reliance.
                 </article>
-                <div>Price: $<span id="price_4">30</span>
-                </div>
-                <button type="button" class="btn btn-default btn-sm add-to-cart" onclick="addToCart(document.getElementById('price_4').innerText, document.getElementById('title_4').innerText, document.getElementById('pysanky-store-3').src)">
+                <article>Price: $<span id="price_4">30</span>
+                </article>
+                <button type="button" class="btn btn-default btn-sm add-to-cart" onclick="addToCart(document.getElementById('price_4').innerText, document.getElementById('title_4').innerText, document.getElementById('pysanky-store-3').src)" data-bs-toggle="modal" data-bs-target="#cart-update">
 
                     <span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart
                 </button>
@@ -142,13 +143,13 @@
                 <img id="pysanky-store-6" class="img-fluid img-thumbnail" src="images/store/pysanky-store-6.jpg" alt="Work four">
             </div>
             <div class="col-lg-6 col-md-6">
-                <h4 id="title_5">Title Here5</h4>
+                <h4 id="title_5">Sorokoklyn</h4>
                 <article>
-                    Information About Egg
+                    This traditional Ukrainian design also known as "40 triangles" represents the 40 days of Lent in the Christian faith.
                 </article>
-                <div>Price: $<span id="price_5">40</span>
-                </div>
-                <button type="button" class="btn btn-default btn-sm add-to-cart" onclick="addToCart(document.getElementById('price_5').innerText, document.getElementById('title_5').innerText, document.getElementById('pysanky-store-6').src)">
+                <article>Price: $<span id="price_5">40</span>
+                </article>
+                <button type="button" class="btn btn-default btn-sm add-to-cart" onclick="addToCart(document.getElementById('price_5').innerText, document.getElementById('title_5').innerText, document.getElementById('pysanky-store-6').src)" data-bs-toggle="modal" data-bs-target="#cart-update">
 
                     <span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart
                 </button>
@@ -161,51 +162,71 @@
                 <img id="pysanky-store-4" class="img-fluid img-thumbnail" src="images/store/pysanky-store-4.jpg" alt="Work four">
             </div>
             <div class="col-lg-6 col-md-6">
-                <h4 id="title_6">Title Here6</h4>
+                <h4 id="title_6">Wedding Pattern</h4>
                 <article>
-                    Information About Egg
+                    The interlocking circles are symbolic of marriage or joining together. 
                 </article>
                 <div>Price: $<span id="price_6">33</span>
                 </div>
-                <button type="button" class="btn btn-default btn-sm add-to-cart" onclick="addToCart(document.getElementById('price_6').innerText, document.getElementById('title_6').innerText, document.getElementById('pysanky-store-4').src)">
+                <button type="button" class="btn btn-default btn-sm add-to-cart" onclick="addToCart(document.getElementById('price_6').innerText, document.getElementById('title_6').innerText, document.getElementById('pysanky-store-4').src)" data-bs-toggle="modal" data-bs-target="#cart-update">
 
                     <span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart
                 </button>
             </div>
         </div>
-        </div>
+    </div>
 
 
 
 
 
+    <!-- Modal -->
+    <div class="modal fade" id="cart-update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="" id="exampleModalLabel"><span class="site-first-title">Added</span> To Cart</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Your Item Has Been Added To Your cart
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
-
-
-        <div class="about">
-            <h3 class="page-heading">About me</h3>
-            <div class="about-image">
-                <img src="img/me.png" alt="A picture of me">
-            </div>
-            <div class="row">
-                <div class="large-offset-2 large-8 columns">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat impedit in nulla, quo odio, quas sunt nostrum ad eius, rerum mollitia dicta velit corporis dolore. Nulla cumque impedit iure incidunt?</p>
                 </div>
             </div>
+        </div>
+    </div>
 
+
+
+
+
+
+    <div class="about">
+        <h3 class="page-heading">About me</h3>
+        <div class="about-image">
+            <img src="img/me.png" alt="A picture of me">
+        </div>
+        <div class="row">
+            <div class="large-offset-2 large-8 columns">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat impedit in nulla, quo odio, quas sunt nostrum ad eius, rerum mollitia dicta velit corporis dolore. Nulla cumque impedit iure incidunt?</p>
+            </div>
         </div>
 
-        <footer id="site-footer">
-            <ul class="inline">
-                <li>alex@codecourse.com</li>
-                <li><a href="#">Twitter</a></li>
-            </ul>
-        </footer>
+    </div>
 
-        <script type="text/javascript" src="js/siteScripts.js"></script>
+    <footer id="site-footer">
+        <ul class="inline">
+            <li>alex@codecourse.com</li>
+            <li><a href="#">Twitter</a></li>
+        </ul>
+    </footer>
 
 
 
-</body>
+    <script type="text/javascript" src="js/siteScripts.js"></script>
 
-</html>
+
+</body></html>
