@@ -17,23 +17,26 @@ s_a[1] = "Alabama *AL|Alaska*AK|Arizona*AZ|Arkansas*AR|California*CA|Colorado*CO
 const cartRow = "<div class='row cart-item justify-content-md-center justify-content-sm-center  text-center d-flex align-items-center' id= 'basket' > </div>";
 
 
-const cartImg = "<div class='col-lg-2 col-md-2 col-sm-1'>" +
+const cartImg = "<div class='col-lg-2 col-md-2 col-sm-12'>" +
     "<img id='pysanky-store-1' src='" + "imagePath" + "' class='img-fluid img-thumbnail' alt='image'>" + "</div>";
 
-const cartQuant = "<div class='col-lg-2 col-md-2 col-sm-1'>" +
+const cartQuant = "<div class='col-lg-2 col-md-2 col-sm-12'>" +
     "<p> quant </p></div>";
 
-const cartName = "<div class='col-lg-2 col-md-2 col-sm-1'>" + "<p> name </p></div>";
+const cartName = "<div class='col-lg-2 col-md-2 col-sm-12'>" + "<p> name </p></div>";
 
-const cartPrice = "<div class='col-lg-2 col-md-2 col-sm-1'>" + "<p>$" + " price </p></div>";
+const cartPrice = "<div class='col-lg-2 col-md-2 col-sm-12'>" + "<p>$" + " price </p></div>";
 
-const cartButton = "<div class='col-lg-2 col-md-2 col-sm-1'>" +
-    "<button type='button' class='btn btn-default btn-sm add-to-cart' " +
-    "onclick='removeFrmCart( removeObj )'>" +
+const cartButton = "<div class='col-lg-2 col-md-2 col-sm-12'>" + "<button type='button' class='btn btn-default btn-sm add-to-cart' " + "onclick='removeFrmCart( removeObj )'>" +
     "<span class='glyphicon glyphicon-shopping-cart'></span>Remove</button></div>";
 
-const cartEmpty = "<div class='col-lg-2 col-md-2 col-sm-1'>" + "<p> Cart Is Empty </p></div> " +
+const cartEmpty = "<div class='col-lg-2 col-md-2 col-sm-1'>" + "<p class ='empty-basket-txt'> Your Cart Is Empty </p></div> " +
     "<div class=' justify-content-md-center justify-content-sm-center  text-center d-flex align-items-center' id= 'empty-basket-img' > </div>";
+
+
+
+
+
 
 const cartEmptyContent = "<div class='col empty-cart'><img src='images/pysanky-3.jpg' alt='Pysanky'></div>";
 
@@ -136,10 +139,11 @@ function cartOnLoad() {
     if (sessionStorage.length == 0) {
         document.getElementById("current-cart").innerHTML += cartRow;
         document.getElementById("basket").innerHTML += cartEmpty;
-
-
         document.getElementById("empty-basket-img").innerHTML += cartEmptyContent;
 
+        var cartTotal = document.getElementById("cartTotal");
+        cartTotal.style.display = "none";
+        return;
     }
 
     for (const [key, value] of Object.entries(sessionStorage)) {

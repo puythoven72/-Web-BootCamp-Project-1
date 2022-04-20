@@ -17,7 +17,6 @@
 
  .header {
      border-bottom: 1px solid #E2E8F0;
-
  }
 
  .navbar {
@@ -26,6 +25,8 @@
      align-items: center;
      padding: 1rem 1.5rem;
      font-family: 'Style Script', cursive;
+     z-index: 9999;
+
  }
 
  .site-title {
@@ -33,7 +34,7 @@
      text-shadow: 2px 2px 5px rgba(138, 192, 222, 1);
  }
 
- 
+
 
  .hamburger {
      display: none;
@@ -47,6 +48,7 @@
      -webkit-transition: all 0.3s ease-in-out;
      transition: all 0.3s ease-in-out;
      background-color: #101010;
+     position: relative z-index: 1000;
  }
 
  .nav-menu {
@@ -54,7 +56,6 @@
      justify-content: space-between;
      align-items: center;
      color: #EAB159;
-
  }
 
  .nav-item {
@@ -129,7 +130,7 @@
      font-size: 2.6rem;
      font-weight: bold;
      margin-top: 30px;
-     letter-spacing: 5px;
+     letter-spacing: 7px;
      text-shadow: 2px 2px 5px rgba(138, 192, 222, 1);
  }
 
@@ -138,9 +139,10 @@
  }
 
  .gallery-item {
-     border-bottom: solid 1px #8AC0DE;
+
      height: 100%;
      font-family: 'Kalam', cursive;
+
  }
 
  .gallery-info {
@@ -153,16 +155,43 @@
      margin: 10px 0 10px 0;
  }
 
+
+ .card {
+     margin: 5px 5px 5px 5px;
+
+ }
+
+ .gallery-item img {
+     width: 150px;
+     height: 150px;
+     margin: 10px 0 10px 0;
+ }
+
+ .card {
+     border-color: #8AC0DE;
+ }
+
+ .card-body {
+     height: 220px;
+
+ }
+
+ .card-body h4 {
+     color: #EAB159;
+     line-height: 0.8;
+ }
+
+
  .gallery h4 {
      color: #EAB159;
      line-height: 0.8;
  }
 
-.gallery-item article{
-    color: #8AC0DE;
-}
+ .gallery-item article {
+     color: #8AC0DE;
+ }
 
-}
+ }
 
  .add-to-cart {
      background-color: #EAB159;
@@ -175,16 +204,6 @@
      font-weight: bold;
  }
 
- .current-order-title h4 {
-
-     font-family: 'Style Script', cursive;
-     color: #EAB159;
-     font-size: 2.6rem;
-     font-weight: bold;
-     margin-top: 30px;
-     letter-spacing: 5px;
-     text-shadow: 2px 2px 5px rgba(138, 192, 222, 1);
- }
 
  .modal-header {
      font-family: 'Style Script', cursive;
@@ -203,32 +222,37 @@
      width: 100px;
      height: 100px;
      margin-bottom: 10px;
-     
+
  }
+
+.empty-basket-txt{
+    font-size: 1.5rem;
+    color: #EAB159;
+}
 
  .empty-cart img {
      width: 300px;
      height: 200px;
      border-radius: 80%;
-
-
  }
 
 
-.cart-header {
+ .cart-header {
      border-bottom: solid 1px #8AC0DE;
      height: 100%;
      font-family: 'Kalam', cursive;
      margin: 10px 0 10px 0;
-    color: #8AC0DE;
+     color: #8AC0DE;
  }
-.cart-item {
+
+ .cart-item {
      border-bottom: solid 1px #8AC0DE;
      height: 100%;
      font-family: 'Kalam', cursive;
      margin: 10px 0 10px 0;
  }
- 
+
+
 
  .cartTotal {
      height: 100%;
@@ -237,14 +261,11 @@
  }
 
  .checkout-title h5 {
-
      font-family: 'Style Script', cursive;
-
      background-color: #8AC0DE;
      color: #EAB159;
      font-size: 2.6rem;
      font-weight: bold;
-
      letter-spacing: 5px;
      text-shadow: 2px 2px 5px rgba(138, 192, 222, 1);
  }
@@ -253,7 +274,6 @@
  .checkout-payment-row {
      padding: 10px 0 10px 0;
      font-family: 'Kalam', cursive;
-
  }
 
  .checkout-userinfo,
@@ -296,20 +316,20 @@
      cursor: pointer;
  }
 
-.button a{
-    color: black;
-    font-weight: normal;
-}
+ .button a {
+     color: black;
+     font-weight: normal;
+ }
 
-.button a:hover{
+ .button a:hover {
      background-color: #8AC0DE;
      font-weight: bold;
      color: #EAB159;
      border-color: #EAB159;
-}
+ }
 
 
-.site-second-title {
+ .site-second-title {
      color: #EAB159;
  }
 
@@ -359,16 +379,31 @@
 
 
 
-     .psyanky-lg {
+     /*.psyanky-lg {
          display: none;
-     }
+     }*/
 
-     .psyanky-sm {
+     .psyanky-lg {
          margin-top: 50px;
          padding-top: 50px;
          display: block;
 
      }
+
+     .carousel-inner img {
+         display: block;
+         height: 250px;
+         border-radius: 80%;
+     }
+
+     /*  .psyanky-sm {
+         margin-top: 50px;
+         padding-top: 50px;
+         display: block;
+
+     }
+
+    
 
      .psyanky-1-img img {
          display: block;
@@ -376,7 +411,7 @@
          border-radius: 80%;
 
      }
-
+*/
      .about-us {
          border: none;
      }
@@ -400,10 +435,39 @@
          padding-bottom: 10px;
      }
 
+     .modal-dialog {
+         top: 20vh;
+        
+     }
+
+
      .cart-item {
          padding-bottom: 10px;
      }
 
+     .cart-header div {
+         display: none;
+     }
 
+     .button,
+     .cartTotal h4 {
+
+         font-weight: bold;
+         width: 100%;
+
+     }
+
+     .btn {
+         width: 100%;
+     }
+
+     .store-header,
+     .current-cart h3 {
+         font-size: 30px;
+     }
+
+     .cartTotal .row {
+         margin 5px;
+     }
 
  }
