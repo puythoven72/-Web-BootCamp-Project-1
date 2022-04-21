@@ -6,6 +6,12 @@ const carousel = document.querySelector(".img-active");
 
 
 
+
+
+
+
+
+
 /* State DROP DOWN CONSTANTS*/
 var s_a = new Array();
 
@@ -133,9 +139,11 @@ function updateQuantity(key, qtyUpdate) {
     sessionStorage.setItem(imgName, JSON.stringify(pysanky));
 }
 
+/* Populates selected items and displays them and the total on cart.html page load*/
 function cartOnLoad() {
     var total = 0;
     var cartCount = 0;
+
     if (sessionStorage.length == 0) {
         document.getElementById("current-cart").innerHTML += cartRow;
         document.getElementById("basket").innerHTML += cartEmpty;
@@ -203,35 +211,60 @@ function removeFrmCart(removeObj) {
 }
 
 
+
+
+
+/*On checkout.html page load will populate the states for dropdown, set up date picker
+and initiate the submit button*/
 function checkOutLoad(stateId, stateElementId) {
+
+   /* var successMessage = document.getElementById("alert-success");
+  
+    successMessage.style.display = 'none';*/
+    
     populateStates(stateId, stateElementId);
 
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict'
 
-    const getDatePickerTitle = elem => {
-        // From the label or the aria-label
-        const label = elem.nextElementSibling;
-        let titleText = '';
-        if (label && label.tagName === 'LABEL') {
-            titleText = label.textContent;
-        } else {
-            titleText = elem.getAttribute('aria-label') || '';
-        }
-        return titleText;
-    }
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
 
-    const elems = document.querySelectorAll('.datepicker_input');
-    for (const elem of elems) {
-        const datepicker = new Datepicker(elem, {
-            'format': 'mm/dd/yyyy',
-            title: getDatePickerTitle(elem)
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    } else {
+                     
+                       /* successMessage.style.display = 'block';
+                        successMessage.classList.add("d-flex");*/
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+
+    //added for date picker
+    $(document).ready(function () {
+        $('#datepicker').datepicker({
+            format: 'mm/dd/yyyy',
+            startDate: new Date()
         });
-    }
+    });
+
+
 
 }
 
 
-function populateStates(arrayId, stateElementId) {
 
+function populateStates(arrayId, stateElementId) {
+    //modelSubmit();
     var stateElement = document.getElementById(stateElementId);
 
     stateElement.length = 0;
@@ -243,5 +276,39 @@ function populateStates(arrayId, stateElementId) {
         var stateValues = state_arr[i].split("*");
         stateElement.options[stateElement.length] = new Option(stateValues[0], stateValues[1]);
 
+    }
+}
+
+
+
+
+
+
+function modelSubmit() {
+    alert("in the function");
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    //var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal 
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    //span.onclick = function() {
+    //  modal.style.display = "none";
+    //}
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
     }
 }

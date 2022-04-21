@@ -26,7 +26,6 @@
      padding: 1rem 1.5rem;
      font-family: 'Style Script', cursive;
      z-index: 9999;
-
  }
 
  .site-title {
@@ -225,10 +224,10 @@
 
  }
 
-.empty-basket-txt{
-    font-size: 1.5rem;
-    color: #EAB159;
-}
+ .empty-basket-txt {
+     font-size: 1.5rem;
+     color: #EAB159;
+ }
 
  .empty-cart img {
      width: 300px;
@@ -363,6 +362,7 @@
      .hamburger {
          display: block;
          cursor: pointer;
+
      }
 
      .hamburger.active .bar:nth-child(2) {
@@ -437,7 +437,7 @@
 
      .modal-dialog {
          top: 20vh;
-        
+
      }
 
 
@@ -468,6 +468,26 @@
 
      .cartTotal .row {
          margin 5px;
+     }
+
+     .checkout-user-row,
+     .checkout-payment-row {
+         padding: 0;
+     }
+     
+     .checkout-user-row input,
+     .checkout-user-row select,
+     .checkout-payment-row input,
+     .checkout-payment-row select,
+     .input-group-text {
+         margin: 10px 0 10px;
+         font-size: 1.2rem;
+     }
+     
+     .checkout-title h5
+     {
+         font-size: 30px;
+         
      }
 
  }
