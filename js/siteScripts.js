@@ -34,7 +34,7 @@ const cartName = "<div class='col-lg-2 col-md-2 col-sm-12'>" + "<p> name </p></d
 const cartPrice = "<div class='col-lg-2 col-md-2 col-sm-12'>" + "<p>$" + " price </p></div>";
 
 const cartButton = "<div class='col-lg-2 col-md-2 col-sm-12'>" + "<button type='button' class='btn btn-default btn-sm add-to-cart' " + "onclick='removeFrmCart( removeObj )'>" +
-    "<span class='glyphicon glyphicon-shopping-cart'></span>Remove</button></div>";
+    "<span class='fa fa-trash'></span> &nbsp; Remove</button></div>";
 
 const cartEmpty = "<div class='col-lg-2 col-md-2 col-sm-1'>" + "<p class ='empty-basket-txt'> Your Cart Is Empty </p></div> " +
     "<div class=' justify-content-md-center justify-content-sm-center  text-center d-flex align-items-center' id= 'empty-basket-img' > </div>";
@@ -84,7 +84,7 @@ function addToCart(price, title, imagePath) {
 }
 
 
-
+/*store.html JS begin*/
 
 /*Creates the pysanky object*/
 
@@ -139,63 +139,67 @@ function updateQuantity(key, qtyUpdate) {
     sessionStorage.setItem(imgName, JSON.stringify(pysanky));
 }
 
+/*cart.html Js*/
+
+
 /* Populates selected items and displays them and the total on cart.html page load*/
 function cartOnLoad() {
     var total = 0;
     var cartCount = 0;
 
+    //if session storage is empty, show empty cart
     if (sessionStorage.length == 0) {
-        document.getElementById("current-cart").innerHTML += cartRow;
-        document.getElementById("basket").innerHTML += cartEmpty;
-        document.getElementById("empty-basket-img").innerHTML += cartEmptyContent;
-
-        var cartTotal = document.getElementById("cartTotal");
-        cartTotal.style.display = "none";
+        emptyCartDisplay();
         return;
     }
 
+    //if session storage not empty loop thru and display contents
     for (const [key, value] of Object.entries(sessionStorage)) {
-        if(key ==="isSaved" ){
+        if (key === "isSaved") {
             continue;
         }
         cartCount = cartCount + 1;
-
-        var updatedCartRowId = cartRowCreate(cartCount);
-
-        var updatedCartRow = cartRow.replace(" 'basket' ", updatedCartRowId);
-
-        document.getElementById("current-cart").innerHTML += updatedCartRow;
-
-        var pysanky = JSON.parse(value);
-
-        var rowTot = calTotalRow(pysanky.price, pysanky.quantity);
-
-        total += rowTot;
-
-        var imgPath = "'images/store/" + pysanky.imageName + "'";
-
-        var updatedImg = cartImg.replace("'imagePath'", imgPath);
-
-        document.getElementById("basket_" + cartCount).innerHTML += updatedImg;
-
-        var updatedQuant = cartQuant.replace("quant", pysanky.quantity);
-
-        document.getElementById("basket_" + cartCount).innerHTML += updatedQuant;
-
-        var updatedname = cartName.replace("name", pysanky.name);
-        document.getElementById("basket_" + cartCount).innerHTML += updatedname;
-
-        var updatedPrice = cartPrice.replace("price", pysanky.price);
-        document.getElementById("basket_" + cartCount).innerHTML += updatedPrice;
-
-        var updatedCartButton = cartButton.replace("removeObj", '"' + key + '"');
-
-        document.getElementById("basket_" + cartCount).innerHTML += updatedCartButton;
+        total += generateCartRow(cartCount, key, value);
     }
-
-
+    //display the total of contents of cart
     document.getElementById("resultField").innerHTML = "Total: $" + total;
 }
+
+function generateCartRow(counter, key, item) {
+    var updatedCartRowId = cartRowCreate(counter);
+
+    var updatedCartRow = cartRow.replace(" 'basket' ", updatedCartRowId);
+
+    document.getElementById("current-cart").innerHTML += updatedCartRow;
+
+    var pysanky = JSON.parse(item);
+
+    var rowTot = calTotalRow(pysanky.price, pysanky.quantity);
+
+    var imgPath = "'images/store/" + pysanky.imageName + "'";
+
+    var updatedImg = cartImg.replace("'imagePath'", imgPath);
+
+    document.getElementById("basket_" + counter).innerHTML += updatedImg;
+
+    var updatedQuant = cartQuant.replace("quant", pysanky.quantity);
+
+    document.getElementById("basket_" + counter).innerHTML += updatedQuant;
+
+    var updatedname = cartName.replace("name", pysanky.name);
+    document.getElementById("basket_" + counter).innerHTML += updatedname;
+
+    var updatedPrice = cartPrice.replace("price", pysanky.price);
+    document.getElementById("basket_" + counter).innerHTML += updatedPrice;
+
+    var updatedCartButton = cartButton.replace("removeObj", '"' + key + '"');
+
+    document.getElementById("basket_" + counter).innerHTML += updatedCartButton;
+    return rowTot;
+}
+
+
+
 
 function calTotalRow(price, qty) {
     return (price * qty);
@@ -216,26 +220,26 @@ function removeFrmCart(removeObj) {
 
 
 
+function emptyCartDisplay() {
+    document.getElementById("current-cart").innerHTML += cartRow;
+    document.getElementById("basket").innerHTML += cartEmpty;
+    document.getElementById("empty-basket-img").innerHTML += cartEmptyContent;
+
+    var cartTotal = document.getElementById("cartTotal");
+    cartTotal.style.display = "none";
+}
+/*cart.html end js*/
+
+/*checkoutpage JS Begin*/
 
 /*On checkout.html page load will populate the states for dropdown, set up date picker
 and initiate the submit button*/
 function checkOutLoad(stateId, stateElementId) {
-
-    var successMessage = document.getElementById("alert-success");
-     successMessage.style.display = 'none';
-    if (checkItemExist("isSaved")) {
-        var isSaved = sessionStorage.getItem("isSaved");
-        if (isSaved) {
-            successMessage.style.display = 'block';
-            successMessage.classList.add("d-flex");
-        }
-    }
+    displaySuccessSave();
     
- var saveCloseNotification = document.getElementById("save-notification-close");
-saveCloseNotification.addEventListener("click", removeSave());
-
-
     populateStates(stateId, stateElementId);
+    
+    initiateDatePicker();
 
     // Example starter JavaScript for disabling form submissions if there are invalid fields
     (function () {
@@ -252,14 +256,35 @@ saveCloseNotification.addEventListener("click", removeSave());
                         event.preventDefault()
                         event.stopPropagation()
                     } else {
-                     sessionStorage.setItem("isSaved", true);
+                        sessionStorage.setItem("isSaved", true);
                     }
 
                     form.classList.add('was-validated')
                 }, false)
             })
     })()
+    
+}
 
+
+function displaySuccessSave() {
+    var successMessage = document.getElementById("alert-success");
+    successMessage.style.display = 'none';
+    //check seession storage to see if the object was saved
+    if (checkItemExist("isSaved")) {
+        var isSaved = sessionStorage.getItem("isSaved");
+        //if successfully saved display notification to user
+        if (isSaved) {
+            successMessage.style.display = 'block';
+            successMessage.classList.add("d-flex");
+        }
+    }
+    var saveCloseNotification = document.getElementById("save-notification-close");
+    saveCloseNotification.addEventListener("click", removeSave());
+}
+
+
+function initiateDatePicker() {
     //added for date picker
     $(document).ready(function () {
         $('#datepicker').datepicker({
@@ -267,8 +292,6 @@ saveCloseNotification.addEventListener("click", removeSave());
             startDate: new Date()
         });
     });
-
-
 
 }
 
@@ -291,10 +314,6 @@ function populateStates(arrayId, stateElementId) {
 }
 
 
-
-
-
-
-function removeSave(){
+function removeSave() {
     sessionStorage.removeItem("isSaved");
 }
